@@ -208,6 +208,19 @@ async def announce_test(ctx, *, message: str):
     """Send announcement to all test channels"""
     await send_announcement([bot_test_channnel_id], message)
     await ctx.send("✅ Announcement sent to test")
+    
+@bot.command()
+@commands.has_permissions(manage_messages=True)  # Only allow moderators
+async def clear_all(ctx, amount: int = 100):
+    """
+    Clears messages in all German city channels.
+    - amount: number of messages to delete per channel (default 100)
+    """
+    for city, ch_id in city_channels.items():
+        channel = bot.get_channel(ch_id)
+        if channel:
+            deleted = await channel.purge(limit=amount)
+            await ctx.send(f"🧹 Cleared {len(deleted)} messages in {city.title()}!", delete_after=5)
 
     
 # --- Manual command to trigger Monday polls ---
