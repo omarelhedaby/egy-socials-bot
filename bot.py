@@ -183,11 +183,29 @@ async def weekly_task():
         
     # Thursday at 18:00 → reminder/announcement
     if now.weekday() == 3 and now.hour == 18 and now.minute == 0:
-        message = ("📢 Hope you guys organized the event and will have a great time! 🎉\n" 
+        message = '''📢 Hope you guys organized the event and will have a great time! 🎉\n" 
                     "Don’t forget to share photos in **#photos** 📸\n" 
-                    "Have a fantastic weekend ahead! 🌟")
-        await send_announcement(city_channels.values(), message[0])
-
+                    "Have a fantastic weekend ahead! 🌟'''
+        await send_announcement(city_channels.values(), message)
+    # --- Friday at 16:00 → Happy Friday message in announcement channel ---
+    if now.weekday() == 4 and now.hour == 16 and now.minute == 0:
+        message = (
+            "🎉 Happy Friday everyone! 🌞\n"
+            "Hope you had a great week and enjoy your weekend!\n"
+            "Don’t forget to play some games online on **#games**"
+        )
+        await send_announcement(announcement_channel_id, message)
+        
+# --- Auto Moderation ---
+BAD_WORDS = ["a7a", "kosom", "metnak", "zeby","manyak","m3rs","a7eh","sharmoot","5awal"]
+@bot.event
+async def on_message(message):
+    if message.author.bot:
+        return
+    if any(word == message.content.lower() for word in BAD_WORDS):
+        await message.delete()
+        await message.channel.send(f"⚠️ {message.author.mention}, watch your language!", delete_after=5)
+    await bot.process_commands(message)
 
 
 # --- Commands ---
