@@ -211,4 +211,6 @@ async def monday_poll(ctx):
     
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 # Run the bot
+
+print(TOKEN)
 bot.run(TOKEN)
