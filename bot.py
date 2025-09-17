@@ -212,7 +212,7 @@ async def on_message(message):
 @bot.command()
 async def announce(ctx, *, message: str):
     """Send announcement to all Announcement channel"""
-    await send_announcement(announcement_channel_id, message)
+    await send_announcement([announcement_channel_id], message)
     await ctx.send("✅ Announcement sent to accouncement channel")
     
 @bot.command()
