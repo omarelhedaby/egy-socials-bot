@@ -4,6 +4,12 @@ from discord.ext import commands, tasks
 import datetime
 import pytz
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # loads variables from .env file
+
+
 
 # Minimal intents
 intents = discord.Intents.default()
@@ -203,6 +209,6 @@ async def monday_poll(ctx):
     await fun_activity_poll(city_channels.values())
     await ctx.send("✅ Monday polls sent!")
     
-TOKEN = "MTQxNzYzNjM3NzgwNTE5MzIzNg.GWU6yI.YeZftZGe5H2k8U3EspXpMIbrAuvbdXAsW6mVn4"
+TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 # Run the bot
 bot.run(TOKEN)
