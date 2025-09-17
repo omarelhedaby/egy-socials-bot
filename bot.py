@@ -8,8 +8,6 @@ import os
 
 # load_dotenv()  # loads variables from .env file
 
-for key, value in os.environ.items():
-    print(f"{key} = {value}")
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 if not TOKEN:
