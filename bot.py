@@ -4,10 +4,9 @@ from discord.ext import commands, tasks
 import datetime
 import pytz
 
-from dotenv import load_dotenv
 import os
 
-load_dotenv()  # loads variables from .env file
+# load_dotenv()  # loads variables from .env file
 
 
 
