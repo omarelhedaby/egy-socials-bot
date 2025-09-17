@@ -8,7 +8,9 @@ import os
 
 # load_dotenv()  # loads variables from .env file
 
-
+TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+if not TOKEN:
+    raise ValueError("DISCORD_BOT_TOKEN not set!")
 
 # Minimal intents
 intents = discord.Intents.default()
@@ -208,8 +210,4 @@ async def monday_poll(ctx):
     await fun_activity_poll(city_channels.values())
     await ctx.send("✅ Monday polls sent!")
     
-TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-# Run the bot
-
-print(TOKEN)
 bot.run(TOKEN)
