@@ -6,6 +6,10 @@ import pytz
 
 import os
 
+from keep_alive import keep_alive
+
+keep_alive()  # start web server
+
 # load_dotenv()  # loads variables from .env file
 
 
