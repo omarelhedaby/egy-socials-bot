@@ -206,7 +206,7 @@ async def announce_cities(ctx, *, message: str):
 @bot.command()
 async def announce_test(ctx, *, message: str):
     """Send announcement to all test channels"""
-    await send_announcement(bot_test_channnel_id, message)
+    await send_announcement([bot_test_channnel_id], message)
     await ctx.send("✅ Announcement sent to test")
 
     
