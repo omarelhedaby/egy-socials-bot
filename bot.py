@@ -202,6 +202,12 @@ async def announce_cities(ctx, *, message: str):
     """Send announcement to all Germany channels"""
     await send_announcement(city_channels.values(), message)
     await ctx.send("✅ Announcement sent to Germany")
+    
+@bot.command()
+async def announce_test(ctx, *, message: str):
+    """Send announcement to all test channels"""
+    await send_announcement(bot_test_channnel_id, message)
+    await ctx.send("✅ Announcement sent to test")
 
     
 # --- Manual command to trigger Monday polls ---
