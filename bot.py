@@ -131,6 +131,13 @@ async def send_announcement(channels, message, title=None):
         if ch:
             t = title if title else "Announcement"
             await ch.send(f"📢 **{t}**\n{message}")
+            
+async def send_announcement_cities(message, title=None):
+    """Send an announcement to a list of channel objects or IDs."""
+    for city, ch_id in city_channels.items():
+            channel = bot.get_channel(ch_id)
+            if channel: 
+                await channel.send(f"📢 Hey {city.title()} \n{message}")
 
 async def weekly_event_poll(channel_ids):
     """Send the Monday meetup poll to a list of channel IDs."""
@@ -219,7 +226,7 @@ async def announce(ctx, *, message: str):
 @bot.command()
 async def announce_cities(ctx, *, message: str):
     """Send announcement to all Germany channels"""
-    await send_announcement(city_channels.values(), message)
+    await send_announcement_cities(message)
     await ctx.send("✅ Announcement sent to Germany")
     
 @bot.command()
