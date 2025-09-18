@@ -95,6 +95,7 @@ city_channels = {
 announcement_channel_id = 1417617923228307612
 concerts_across_germany = 1417955767029469194
 bot_test_channnel_id = 1417958275550412901
+welcome_channel_id=1418208984434741280
 
 def pick_random_activities(n=3):
     return random.sample(ACTIVITIES, n)
@@ -106,8 +107,7 @@ async def on_ready():
     
 @bot.event
 async def on_member_join(member):
-    # Get the welcome channel
-    channel = discord.utils.get(member.guild.text_channels, name="welcome-to-egypt")  # change to your actual channel
+    channel = bot.get_channel(welcome_channel_id)
     if channel:
         await channel.send(
             f"👋 Welcome {member.mention} to EgyptiansGermanyCommunity!\n"
