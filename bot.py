@@ -39,6 +39,29 @@ ACTIVITIES = [
     "Visit a local market 🛍️",
 ]
 
+city_roles = {
+    "mannheim-heidelberg": "Mannheim-Heidelberg",
+    "hamburg": "Hamburg",
+    "munich": "Munich",
+    "cologne": "Cologne",
+    "frankfurt": "Frankfurt",
+    "stuttgart": "Stuttgart",
+    "dusseldorf": "Dusseldorf",
+    "dortmund": "Dortmund",
+    "essen": "Essen",
+    "leipzig": "Leipzig",
+    "freiburg": "Freiburg",
+    "erfurt": "Erfurt",
+    "wiesbaden-mainz": "Wiesbaden-Mainz",
+    "wurzburg": "Wurzburg",
+    "thuringen": "Thuringen",
+    "bremen": "Bremen",
+    "koblenz": "Koblenz",
+    "niedersachsen": "Niedersachsen",
+    "bonn": "Bonn",
+    "duisburg": "Duisburg"
+}
+
 # Dictionary of German city -> channel_id
 city_channels = {
     "mannheim-heidelberg": 1417955923254710465,
@@ -251,5 +274,38 @@ async def monday_poll(ctx):
     await weekly_event_poll(city_channels.values())
     await fun_activity_poll(city_channels.values())
     await ctx.send("✅ Monday polls sent!")
+    
+@bot.command()
+async def join(ctx, city: str):
+    """Join a city role. Example: /join frankfurt"""
+    city = city.lower()
+    if city in city_roles:
+        role_name = city_roles[city]
+        role = discord.utils.get(ctx.guild.roles, name=role_name)
+        if role:
+            await ctx.author.add_roles(role)
+            await ctx.send(f"✅ {ctx.author.mention} joined **{role_name}** community!")
+        else:
+            await ctx.send(f"⚠️ Role **{role_name}** not found on this server.")
+    else:
+        available = ", ".join(city_roles.keys())
+        await ctx.send(f"⚠️ Invalid city! Available cities are:\n```{available}```")
+
+
+@bot.command()
+async def leave(ctx, city: str):
+    """Leave a city role. Example: /leave frankfurt"""
+    city = city.lower()
+    if city in city_roles:
+        role_name = city_roles[city]
+        role = discord.utils.get(ctx.guild.roles, name=role_name)
+        if role in ctx.author.roles:
+            await ctx.author.remove_roles(role)
+            await ctx.send(f"👋 {ctx.author.mention} left **{role_name}** community.")
+        else:
+            await ctx.send(f"⚠️ You don’t have the role **{role_name}**.")
+    else:
+        available = ", ".join(city_roles.keys())
+        await ctx.send(f"⚠️ Invalid city! Available cities are:\n```{available}```")
     
 bot.run(TOKEN)
