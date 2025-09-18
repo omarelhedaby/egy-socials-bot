@@ -59,7 +59,8 @@ city_roles = {
     "koblenz": "Koblenz",
     "niedersachsen": "Niedersachsen",
     "bonn": "Bonn",
-    "duisburg": "Duisburg"
+    "duisburg": "Duisburg",
+    "berlin": "Berlin"
 }
 
 # Dictionary of German city -> channel_id
@@ -83,7 +84,8 @@ city_channels = {
     "koblenz" : 1417956336838381690,
     "niedersachsen" : 1417956297965437199,
     "bonn" : 1417956058214961304,
-    "duisburg" : 1417956009003057182
+    "duisburg" : 1417956009003057182,
+    "berlin" : 1418212609085149365
 }
 
 announcement_channel_id = 1417617923228307612
