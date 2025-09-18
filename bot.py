@@ -43,7 +43,7 @@ city_roles = {
     "mannheim-heidelberg": "Mannheim-Heidelberg",
     "hamburg": "Hamburg",
     "munich": "Munich",
-    "cologne": "koln",
+    "cologne": "Koln",
     "frankfurt": "Frankfurt",
     "stuttgart": "Stuttgart",
     "dusseldorf": "Dusseldorf",
