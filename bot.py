@@ -208,7 +208,7 @@ async def fun_activity_poll(channel_ids):
 async def weekly_task():
     tz = pytz.timezone("Europe/Berlin")
     now = datetime.datetime.now(tz)
-
+    print(now)
     # Run only on Monday at 13:00 
     if now.weekday() == 0 and now.hour == 13 and now.minute == 0:
         await weekly_event_poll(city_channels.values())
@@ -221,7 +221,7 @@ async def weekly_task():
                     "Have a fantastic weekend ahead! 🌟'''
         await send_announcement(city_channels.values(), message)
     # --- Friday at 16:00 → Happy Friday message in announcement channel ---
-    if now.weekday() == 4 and now.hour == 16 and now.minute == 32:
+    if now.weekday() == 4 and now.hour == 16 and now.minute == 37:
         message = (
             "🎉 Happy Friday everyone! 🌞\n"
             "Hope you had a great week and enjoy your weekend!\n"
