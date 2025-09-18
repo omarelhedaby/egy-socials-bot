@@ -78,18 +78,14 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     # Get the welcome channel
-    channel = discord.utils.get(member.guild.text_channels, name="Welcome to EgyptianGermanySocials")  # change to your actual channel
+    channel = discord.utils.get(member.guild.text_channels, name="welcome-to-egypt")  # change to your actual channel
     if channel:
         await channel.send(
-            f"👋 Hi {member.mention}, welcome to **EgyptiansGermanyCommunity**! 🎉\n\n"
-            "Make sure to check out the channel related to your city to connect with locals 🏙️.\n"
-            "Say hi to **3AM Mohamed, our trusty Bawab bot** 🤖\n\n"
-            "Also, don’t miss our voice channels for:\n"
-            "- 💬 **Dardasha & Questions** – chat with the community in real-time\n"
-            "- 🎓 **Careers** – share and get advice about work opportunities\n"
-            "- 📢 **Announcements** – stay updated with community news\n"
-            "- 🎶 **Concerts Around Germany** – keep track of events and gigs!\n\n"
-            "Have fun and enjoy your stay! 🚀"
+            f"👋 Welcome {member.mention} to EgyptiansGermanyCommunity!\n"
+            f"Please use `/join <city>` to access your local community.\n"
+            f"Say hi to **3am Mohamed the bawab bot** 🤖, and don’t forget to check out:\n"
+            f"🎤 Voice channels: dardasha, questions, careers, concerts-around-germany\n"
+            f"📢 Announcements and events every week!"
         )
 
     # Send a friendly DM
