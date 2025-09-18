@@ -9,6 +9,10 @@ import os
 
 # load_dotenv()  # loads variables from .env file
 
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True  # ✅ REQUIRED for on_member_join
+
 
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 if not TOKEN:
