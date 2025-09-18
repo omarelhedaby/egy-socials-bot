@@ -221,7 +221,7 @@ async def weekly_task():
                     "Have a fantastic weekend ahead! 🌟'''
         await send_announcement(city_channels.values(), message)
     # --- Friday at 16:00 → Happy Friday message in announcement channel ---
-    if now.weekday() == 4 and now.hour == 4 and now.minute == 29:
+    if now.weekday() == 4 and now.hour == 16 and now.minute == 32:
         message = (
             "🎉 Happy Friday everyone! 🌞\n"
             "Hope you had a great week and enjoy your weekend!\n"
